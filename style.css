@@ -1,0 +1,1200 @@
+/* ============================================================
+   上海海洋大学光影社 官方网站 · 全站统一样式
+   文件路径：css/style.css
+   颜色方案：深蓝 #1a3a5c（主色） + 青色 #17a2b8（强调色）
+   说明：纯原生 CSS，无框架；移动端优先，通过媒体查询适配
+   ============================================================ */
+
+/* ============ 1. CSS 变量（全站主题配置） ============ */
+:root {
+  --color-primary: #1a3a5c;          /* 主色：深蓝 */
+  --color-primary-dark: #0f2a42;     /* 更深蓝（页脚等） */
+  --color-primary-light: #274d73;    /* 浅一档深蓝（悬停） */
+  --color-accent: #17a2b8;           /* 强调色：青色 */
+  --color-accent-dark: #117a8b;      /* 深青（悬停） */
+  --color-accent-light: #e8f6f8;     /* 青色浅底 */
+  --color-bg: #f4f6f8;               /* 页面背景 */
+  --color-surface: #ffffff;          /* 卡片/区块底色 */
+  --color-text: #2b3a48;             /* 正文文字 */
+  --color-heading: #1a3a5c;          /* 标题文字 */
+  --color-muted: #6b7680;            /* 次要文字 */
+  --color-border: #dde3e8;           /* 边框 */
+  --color-highlight: #fff3c4;        /* 高亮底（核心管理团队标黄） */
+  --color-highlight-border: #e6b422; /* 高亮边框 */
+
+  --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Noto Sans CJK SC", "Helvetica Neue", Arial, sans-serif;
+
+  --header-height: 64px;
+  --radius: 8px;
+  --shadow-sm: 0 1px 2px rgba(16, 40, 63, .08);
+  --shadow-md: 0 6px 18px rgba(16, 40, 63, .12);
+  --transition: all .22s ease;
+}
+
+/* ============ 2. 基础重置 ============ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* 带 id 的区块被锚点跳转时，为吸顶导航预留高度，避免标题被遮住 */
+section[id] {
+  scroll-margin-top: 88px;
+}
+
+body {
+  font-family: var(--font-stack);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+/* 通用容器 */
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ============ 3. 顶部导航栏 ============ */
+.brand-logo-img {
+  width: 36px;        /* 根据实际 Logo 比例调整，一般 32–40px 合适 */
+  height: 36px;
+  object-fit: contain; /* 保证图片不变形 */
+  border-radius: 50%;  /* 如果 Logo 是圆形，保留这行；方形 Logo 可删掉 */
+  margin-right: 8px;   /* 和右侧社团名留出间距 */
+  vertical-align: middle;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+}
+
+/* Logo 区 */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-heading);
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.brand:hover {
+  color: var(--color-accent);
+}
+
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* 导航链接 */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-links a {
+  display: inline-block;
+  padding: 8px 14px;
+  color: var(--color-text);
+  font-size: .95rem;
+  border-radius: var(--radius);
+}
+
+.nav-links a:hover {
+  background: var(--color-accent-light);
+  color: var(--color-accent-dark);
+}
+
+/* 当前页面高亮（由 main.js 动态添加 .is-active） */
+.nav-links a.is-active {
+  color: var(--color-accent-dark);
+  background: var(--color-accent-light);
+  font-weight: 600;
+}
+
+/* 汉堡菜单按钮（默认隐藏，移动端显示） */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 9px;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.nav-toggle .bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* 汉堡按钮展开态：三条线变成 X */
+.nav-toggle.is-open .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.is-open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.is-open .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ============ 4. Hero 首页主视觉 ============ */
+/* 无图时的默认背景：品牌渐变（保持原效果） */
+.hero {
+  background: linear-gradient(160deg, var(--color-primary) 0%, var(--color-primary-light) 55%, var(--color-accent) 130%);
+  color: #fff;
+  text-align: center;
+  padding: 72px 20px 80px;
+}
+
+/* ---- 可选主视觉图片：由 main.js 探测到图片后自动加上 .has-hero-photo ----
+   图层顺序：半透明深色遮罩（保证白字可读）→ 主视觉图片 → 渐变兜底。
+   图片未就绪或缺失时不加该类，页面仍显示上面的品牌渐变。
+   图片地址由 main.js 写入 --hero-photo-desktop / --hero-photo-mobile，
+   CSS 无需再改动：
+     assets/images/hero-bg.webp        桌面横版（2560×800，3.2:1）
+     assets/images/hero-bg.jpg         同上，WebP 不被支持时的备用格式
+     assets/images/hero-bg-mobile.webp 手机竖版（1080×1350，4:5），可缺省
+     assets/images/hero-bg-mobile.jpg  同上，备用格式
+   手机端若未提供竖版，会自动退回用桌面图（居中偏上裁切）。 */
+.hero.has-hero-photo {
+  background-image:
+    linear-gradient(160deg, rgba(15, 42, 66, .76) 0%, rgba(26, 58, 92, .62) 55%, rgba(23, 162, 184, .52) 130%),
+    var(--hero-photo-desktop, none),
+    linear-gradient(160deg, var(--color-primary) 0%, var(--color-primary-light) 55%, var(--color-accent) 130%);
+  background-size: cover;
+  background-position: center, center 30%, center;
+  background-repeat: no-repeat;
+}
+
+.hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hero .club-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.hero .slogan {
+  font-size: 1.4rem;
+  color: #cfe9ef;
+  margin-bottom: 16px;
+}
+
+.hero .intro {
+  font-size: 1.05rem;
+  color: #eaf4f6;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ============ 5. 通用区块与标题 ============ */
+.section {
+  padding: 56px 0;
+}
+
+.section--alt {
+  background: var(--color-surface);
+}
+
+.section-title {
+  text-align: center;
+  color: var(--color-heading);
+  font-size: 1.7rem;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--color-muted);
+  margin-bottom: 32px;
+}
+
+/* ============ 6. 卡片栅格（首页核心承诺等） ============ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 26px 22px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-accent);
+}
+
+/* 社团简介：Logo 方块在左，介绍文字在右（关于我们页） */
+.intro-layout {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.intro-logo {
+  display: flex;
+  justify-content: center;
+}
+
+.intro-logo img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+}
+
+.card h3 {
+  color: var(--color-heading);
+  margin-bottom: 12px;
+  font-size: 1.15rem;
+}
+
+.card p {
+  color: var(--color-muted);
+  font-size: .95rem;
+}
+
+.card .card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius);
+  background: var(--color-accent-light);
+  color: var(--color-accent-dark);
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+}
+
+/* ============ 7. 最新公告（首页三篇推送链接） ============ */
+.announce-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* 三篇推送纵向排列，整张卡片即一条推送链接 */
+.announce-list {
+  display: grid;
+  gap: 14px;
+}
+
+.announce-item {
+  display: block;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-accent);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 18px 22px;
+  color: var(--color-text);
+  transition: var(--transition);
+}
+
+.announce-item:hover {
+  color: var(--color-text);
+  border-color: var(--color-accent);
+  border-left-color: var(--color-accent-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.announce-item .announce-date {
+  display: inline-block;
+  font-size: .8rem;
+  color: var(--color-accent-dark);
+  background: var(--color-accent-light);
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-bottom: 6px;
+}
+
+.announce-item h3 {
+  color: var(--color-heading);
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+  transition: var(--transition);
+}
+
+.announce-item:hover h3 {
+  color: var(--color-accent-dark);
+}
+
+.announce-item p {
+  color: var(--color-muted);
+  font-size: .92rem;
+}
+
+/* 三条推送轮换展示：脚本启用（.is-carousel）后才逐条切换，未启用时三条按上下排列完整展示 */
+.announce-carousel {
+  position: relative;
+}
+
+.announce-carousel.is-carousel .announce-item {
+  display: none;
+}
+
+.announce-carousel.is-carousel .announce-item.is-active {
+  display: block;
+  animation: announce-fade .38s ease;
+}
+
+@keyframes announce-fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 轮换控件：上一条 / 圆点 / 下一条 */
+.announce-controls {
+  margin-top: 18px;
+}
+
+.announce-controls:not([hidden]) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.announce-arrow {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  font-family: inherit;
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--color-primary);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.announce-arrow:hover {
+  color: #fff;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.announce-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.announce-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  background: var(--color-border);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.announce-dot:hover {
+  background: var(--color-accent-dark);
+}
+
+.announce-dot.is-current {
+  width: 22px;
+  border-radius: 20px;
+  background: var(--color-accent);
+}
+
+.announce-arrow:focus-visible,
+.announce-dot:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ============ 8. 快捷入口按钮 ============ */
+.quick-entries {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  font-size: .95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.btn--primary {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: var(--color-accent-dark);
+  color: #fff;
+}
+
+.btn--outline {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, .55);
+}
+
+.btn--outline:hover {
+  background: rgba(255, 255, 255, .12);
+  color: #fff;
+}
+
+.btn--dark {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.btn--dark:hover {
+  background: var(--color-primary-dark);
+  color: #fff;
+}
+
+/* 白底强调按钮：用于 Hero 上的主行动（如「加入我们」），在渐变/图片背景上对比更强 */
+.btn--light {
+  background: #fff;
+  color: var(--color-primary);
+  border-color: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .18);
+}
+
+.btn--light:hover {
+  background: #eef7f9;
+  color: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+/* ============ 9. 子页顶部横幅（除首页外的页面标题区） ============ */
+.page-banner {
+  background: linear-gradient(160deg, var(--color-primary), var(--color-accent));
+  color: #fff;
+  text-align: center;
+  padding: 48px 20px;
+}
+
+.page-banner h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.page-banner p {
+  color: #eaf4f6;
+}
+
+/* ============ 10. 组织架构图（纯 CSS/HTML 语义结构） ============ */
+.org-chart {
+  text-align: center;
+}
+
+.org-level {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 0;
+}
+
+.org-node {
+  background: var(--color-surface);
+  border: 2px solid var(--color-primary);
+  color: var(--color-heading);
+  border-radius: var(--radius);
+  padding: 12px 20px;
+  font-weight: 600;
+  position: relative;
+  min-width: 150px;
+}
+
+/* 指导老师标注 */
+.org-node--teacher {
+  border-color: var(--color-accent);
+  background: var(--color-accent-light);
+}
+
+.org-node .org-tag {
+  display: block;
+  font-size: .75rem;
+  font-weight: 400;
+  color: var(--color-muted);
+  margin-top: 2px;
+}
+
+/* 垂直连接线 */
+.org-connector {
+  width: 2px;
+  height: 26px;
+  background: var(--color-border);
+  margin: 0 auto;
+}
+
+/* 职能部门节点（青色） */
+.org-node--dept {
+  border-color: var(--color-accent);
+  font-size: .95rem;
+  min-width: 130px;
+}
+
+/* ============ 11. 指导老师卡片 ============ */
+.teacher-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 4px solid var(--color-accent);
+  border-radius: var(--radius);
+  padding: 30px 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* 头像尺寸：四张卡片统一，取 128px 便于正常缩放下看清（窄屏见第 21 节媒体查询） */
+.teacher-avatar {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.teacher-card h3 {
+  color: var(--color-heading);
+  font-size: 1.3rem;
+}
+
+.teacher-card .teacher-role {
+  color: var(--color-accent-dark);
+  font-weight: 600;
+  margin: 6px 0 14px;
+}
+
+.teacher-card p {
+  color: var(--color-muted);
+  font-size: .95rem;
+}
+
+.teacher-badge {
+  display: inline-block;
+  background: var(--color-accent-light);
+  color: var(--color-accent-dark);
+  font-size: .82rem;
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin: 4px;
+}
+
+/* 指导老师照片：与核心管理人员头像统一为圆形、同尺寸，保证四张卡片并排等齐 */
+.teacher-photo {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 18%;
+  border: 3px solid var(--color-accent-light);
+  margin-bottom: 16px;
+}
+
+/* 指导老师与核心管理人员并排放置（复用 teacher-card 版式） */
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(232px, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+.people-grid .teacher-card {
+  max-width: none;
+  margin: 0;
+}
+
+/* 徽标统一贴底，四张卡片视觉齐平 */
+.people-grid .teacher-card > div:last-child {
+  margin-top: auto;
+}
+
+/* ============ 12. 表格（核心人员 / 财务简报） ============ */
+.table-wrap {
+  overflow-x: auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 560px;
+}
+
+thead th {
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 16px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+tbody td {
+  padding: 12px 16px;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+tbody tr:nth-child(even) {
+  background: #fafbfc;
+}
+
+/* 核心管理团队（社长 / 副社长 / 财务负责人）整行标黄 */
+tr.row-highlight {
+  background: var(--color-highlight) !important;
+}
+
+tr.row-highlight td:first-child {
+  border-left: 3px solid var(--color-highlight-border);
+}
+
+/* ============ 13. 文档下载与预览 ============ */
+.doc-card {
+  text-align: center;
+  background: var(--color-surface);
+  border: 1px dashed var(--color-accent);
+  border-radius: var(--radius);
+  padding: 40px 24px;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.doc-card h3 {
+  color: var(--color-heading);
+  margin-bottom: 8px;
+}
+
+.doc-card p {
+  color: var(--color-muted);
+  margin-bottom: 20px;
+}
+
+.doc-preview {
+  margin-top: 28px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.doc-preview iframe {
+  width: 100%;
+  height: 520px;
+  border: 0;
+  display: block;
+}
+
+/* ============ 14. 章程制度页：章程草案（左）与配套制度（右）左右分区 ============ */
+.doc-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.doc-layout__main,
+.doc-layout__side {
+  min-width: 0;
+}
+
+/* 左分区：文档卡片撑满所在列，不再单独居中限宽 */
+.doc-layout__main .doc-card {
+  max-width: none;
+}
+
+/* 右分区：各项配套制度自上而下依次排列 */
+.info-stack {
+  display: grid;
+  gap: 16px;
+}
+
+/* 窄屏（≤900px）自动改为上下排列，避免两栏过窄 */
+@media (max-width: 900px) {
+  .doc-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/* ============ 15. 占位提示（待完善内容） ============ */
+.placeholder-box {
+  background: var(--color-surface);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius);
+  padding: 28px 22px;
+  text-align: center;
+  color: var(--color-muted);
+}
+
+.placeholder-box .placeholder-icon {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+/* ============ 16. 信息卡片 / 联系方式 ============ */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.info-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.info-card h3 {
+  color: var(--color-heading);
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.info-card p {
+  color: var(--color-muted);
+  font-size: .95rem;
+}
+
+.info-card .info-icon {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+/* ============ 17. 提示语 / 说明条 ============ */
+.note {
+  background: var(--color-accent-light);
+  border-left: 4px solid var(--color-accent);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  color: var(--color-heading);
+  font-size: .95rem;
+  max-width: 860px;
+  margin: 20px auto 0;
+}
+
+/* ============ 18. 页脚 ============ */
+.site-footer {
+  background: var(--color-primary-dark);
+  color: #cfdbe6;
+  padding: 40px 0 24px;
+  margin-top: 40px;
+}
+
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.footer-col h4 {
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+.footer-col p,
+.footer-col a {
+  color: #cfdbe6;
+  font-size: .9rem;
+  line-height: 2;
+}
+
+.footer-col a:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, .15);
+  padding-top: 18px;
+  text-align: center;
+  font-size: .85rem;
+  color: #9fb0c0;
+}
+
+/* ============ 19. 回到顶部按钮（由 main.js 动态创建） ============ */
+.back-top {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 44px;
+  height: 44px;
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: var(--transition);
+  z-index: 90;
+}
+
+.back-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-top:hover {
+  background: var(--color-accent-dark);
+}
+
+/* ============ 20. 新闻列表与分页（信息公开 · 最新公告） ============ */
+.news-list {
+  max-width: 880px;
+  margin: 0 auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.news-item {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 13px 24px;
+  border-top: 1px solid var(--color-border);
+  transition: var(--transition);
+}
+
+.news-item:first-child {
+  border-top: 0;
+}
+
+.news-item:hover {
+  background: #f5fafc;
+}
+
+/* 非当前页条目由 main.js 加上 .is-hidden 隐藏 */
+.news-item.is-hidden {
+  display: none;
+}
+
+.news-date {
+  flex: 0 0 auto;
+  font-size: .85rem;
+  color: var(--color-accent-dark);
+  font-variant-numeric: tabular-nums;
+}
+
+.news-link {
+  flex: 1 1 auto;
+  min-width: 0;
+  color: var(--color-heading);
+  font-size: .95rem;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.news-link:hover {
+  color: var(--color-accent-dark);
+  text-decoration: underline;
+}
+
+/* 分页条 */
+.news-pager {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.pager-pages {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.pager-btn {
+  min-width: 40px;
+  padding: 7px 12px;
+  font-family: inherit;
+  font-size: .9rem;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.pager-btn:hover:not(:disabled) {
+  color: var(--color-accent-dark);
+  border-color: var(--color-accent);
+}
+
+.pager-btn.is-current {
+  color: #fff;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  font-weight: 600;
+}
+
+.pager-btn:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.pager-info {
+  color: var(--color-muted);
+  font-size: .85rem;
+}
+
+/* ============ 21. 移动端响应式（<=768px） ============ */
+@media (max-width: 768px) {
+  /* 显示汉堡按钮，隐藏横向导航 */
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
+  }
+
+  .nav-links.is-open {
+    max-height: 360px;
+  }
+
+  .nav-links a {
+    padding: 14px 20px;
+    border-top: 1px solid var(--color-border);
+    border-radius: 0;
+  }
+
+  /* Hero 缩小字号 */
+  .hero {
+    padding: 56px 20px 64px;
+  }
+
+  /* 手机端主视觉：优先竖版图，没有竖版就退回桌面横版图（居中偏上取景） */
+  .hero.has-hero-photo {
+    background-image:
+      linear-gradient(160deg, rgba(15, 42, 66, .80) 0%, rgba(26, 58, 92, .68) 60%, rgba(23, 162, 184, .56) 130%),
+      var(--hero-photo-mobile, var(--hero-photo-desktop, none)),
+      linear-gradient(160deg, var(--color-primary) 0%, var(--color-primary-light) 55%, var(--color-accent) 130%);
+    background-position: center, center 20%, center;
+  }
+
+  .hero .club-name {
+    font-size: 1.9rem;
+  }
+
+  .hero .slogan {
+    font-size: 1.15rem;
+  }
+
+  /* 三列卡片变单列 */
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-entries {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .quick-entries .btn {
+    width: 100%;
+  }
+
+  /* 社团简介：Logo 收小并居中排在文字上方 */
+  .intro-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .intro-logo img {
+    max-width: 150px;
+    border-radius: 12px;
+  }
+
+  /* 新闻条目改为上下两行，日期在左、标题换行显示 */
+  .news-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 12px 18px;
+  }
+
+  .news-link {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .news-pager {
+    gap: 6px;
+  }
+
+  .pager-btn {
+    min-width: 36px;
+    padding: 6px 10px;
+  }
+
+  /* 头像在窄屏收一号，给文字留出宽度 */
+  .teacher-avatar,
+  .teacher-photo {
+    width: 112px;
+    height: 112px;
+  }
+
+  .teacher-avatar {
+    font-size: 2.2rem;
+  }
+
+  /* 组织架构纵向堆叠 */
+  .org-level {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .org-connector {
+    height: 20px;
+  }
+
+  /* 页脚单列 */
+  .footer-grid {
+    flex-direction: column;
+  }
+
+  .section {
+    padding: 40px 0;
+  }
+}

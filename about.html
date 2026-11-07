@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>光影社 · 关于我们</title>
+  <meta name="description" content="上海海洋大学光影社简介、组织架构、指导老师与核心人员介绍。">
+  <!-- 网站图标 -->
+  <link rel="icon" type="image/png" href="assets/images/icon.png">
+  <!-- 全站统一样式 -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==================== 顶部导航栏（全站一致） ==================== -->
+  <header class="site-header">
+    <nav class="nav container">
+      <!-- Logo：点击回到首页 -->
+      <a href="index.html" class="brand">
+        <img src="assets/images/favicon.png" alt="光影社Logo" class="brand-logo-img">
+        <span>上海海洋大学光影社</span>
+      </a>
+
+      <!-- 汉堡菜单按钮（移动端显示） -->
+      <button class="nav-toggle" aria-label="菜单" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- 导航链接 -->
+      <ul class="nav-links">
+        <li><a href="about.html">关于我们</a></li>
+        <li><a href="governance.html">章程制度</a></li>
+        <li><a href="transparency.html">信息公开</a></li>
+        <li><a href="contact.html">联系我们</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ==================== 子页顶部横幅 ==================== -->
+    <section class="page-banner">
+      <h1>关于我们</h1>
+      <p>以心理健康教育为内核的心理剧与心理影像创作平台</p>
+    </section>
+
+    <!-- ==================== 一、社团简介 ==================== -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">社团简介</h2>
+        <p class="section-subtitle">光至落笔 · 同幕共影</p>
+
+        <!-- Logo 在左、介绍文字在右（窄屏自动改为 Logo 在上） -->
+        <div class="intro-layout">
+
+          <div class="intro-logo">
+            <img src="assets/images/logo.png" alt="上海海洋大学光影社 Logo">
+          </div>
+
+          <div class="card">
+            <p>上海海洋大学光影社是文化体育类学生社团，以<strong>心理健康教育为内核</strong>，以<strong>心理剧与心理影像创作为主要活动方向</strong>。微电影、影视作品与舞台作品是心理主题的主要表现形式。</p>
+            <br>
+            <!-- TODO: 挂靠单位待更改 -->
+            <p>社团秉持「光至落笔，同幕共影」的宗旨，接受学校党委领导和团委指导，挂靠相关学院/职能部门，接受共青团上海海洋大学委员会及学生社团管理中心的指导监督。</p>
+            <br>
+            <p>社团为成员提供一个安全、包容的表达与创作空间：通过心理剧的编排演绎、心理主题影像的拍摄制作，引导成员在创作中认识自我、悦纳情绪、联结他人，实现心理健康教育与艺术创作的有机融合。</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 二、组织架构图（纯 CSS/HTML 结构） ==================== -->
+    <section class="section section--alt">
+      <div class="container">
+        <h2 class="section-title">组织架构</h2>
+        <p class="section-subtitle">层级关系：成员大会 → 核心管理团队 → 五个职能部门</p>
+
+        <!-- 组织架构图：采用语义化 div 结构 + CSS 绘制连接线，无图片依赖 -->
+        <figure class="org-chart">
+
+          <!-- 第一层：指导老师（旁注） + 成员大会（最高权力机构） -->
+          <div class="org-level">
+            <div class="org-node org-node--teacher">
+              指导老师
+              <span class="org-tag">社团业务指导 · 思想政治教育</span>
+            </div>
+            <div class="org-node">
+              成员大会
+              <span class="org-tag">最高权力机构</span>
+            </div>
+          </div>
+
+          <!-- 连接线 -->
+          <div class="org-connector" aria-hidden="true"></div>
+
+          <!-- 第二层：核心管理团队 -->
+          <div class="org-level">
+            <div class="org-node">
+              核心管理团队
+              <span class="org-tag">社长 · 副社长 · 财务负责人</span>
+            </div>
+          </div>
+
+          <!-- 连接线 -->
+          <div class="org-connector" aria-hidden="true"></div>
+
+          <!-- 第三层：五个职能部门 -->
+          <div class="org-level">
+            <div class="org-node org-node--dept">创作部</div>
+            <div class="org-node org-node--dept">演员部</div>
+            <div class="org-node org-node--dept">舞台与影像技术部</div>
+            <div class="org-node org-node--dept">美术与宣传部</div>
+            <div class="org-node org-node--dept">行政与财务部</div>
+          </div>
+
+        </figure>
+      </div>
+    </section>
+
+    <!-- ==================== 三、指导老师与核心管理人员（并排） ==================== -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">指导老师与核心管理人员</h2>
+        <p class="section-subtitle"></p>
+
+        <!-- 四张卡片沿用指导老师栏目版式，并排展示 -->
+        <div class="people-grid">
+
+          <!-- 业务指导老师 -->
+          <article class="teacher-card">
+            <img src="assets/images/teacher.jpg" alt="指导老师 丁少岩" class="teacher-photo">
+            <h3>丁少岩</h3>
+            <p class="teacher-role">指导老师</p>
+            <p>负责心理剧等心理主题创作的专业指导，同时承担思想政治教育职责，为社团活动提供专业支撑与方向把关。</p>
+            <div>
+              <span class="teacher-badge">心理健康教育资质</span>
+              <span class="teacher-badge">思想政治教育</span>
+              <span class="teacher-badge">业务指导</span>
+            </div>
+          </article>
+
+          <!-- 社长（头像占位，姓名待补充） -->
+          <article class="teacher-card">
+            <!-- TODO: 补充社长真实照片，替换为 <img src="assets/images/member-xx.jpg" alt="社长" class="teacher-photo"> -->
+            <!-- TODO: 若暂无相关人员，替换为 <div class="teacher-avatar" aria-hidden="true">社</div> -->
+            <img src="assets/images/member-01.jpg" alt="社长 孔祥蘅" class="teacher-photo">
+            <!-- TODO: 补充社长真实姓名（姓名登记建议使用拼音） -->
+            <h3>孔祥蘅</h3>
+            <p class="teacher-role">社长</p>
+            <p>主持社团全面工作，统筹活动组织与对外联络。</p>
+            <div>
+              <span class="teacher-badge">全面统筹</span>
+              <span class="teacher-badge">对外联络</span>
+            </div>
+          </article>
+
+          <!-- 副社长（头像占位，姓名待补充） -->
+          <article class="teacher-card">
+            <!-- TODO: 补充副社长真实照片，替换为 <img src="assets/images/member-xx.jpg" alt="副社长" class="teacher-photo"> -->
+            <!-- TODO: 若暂无相关人员，替换为 <div class="teacher-avatar" aria-hidden="true">副</div> -->
+            <div class="teacher-avatar" aria-hidden="true">副</div>
+            <!-- TODO: 补充副社长真实姓名（姓名登记建议使用拼音） -->
+            <h3>待补充</h3>
+            <p class="teacher-role">副社长</p>
+            <p>协助社长开展工作，分管创作与活动组织。</p>
+            <div>
+              <span class="teacher-badge">创作统筹</span>
+              <span class="teacher-badge">活动组织</span>
+            </div>
+          </article>
+
+          <!-- 财务负责人（头像占位，姓名待补充） -->
+          <article class="teacher-card">
+            <!-- TODO: 补充财务负责人真实照片，替换为 <img src="assets/images/member-xx.jpg" alt="财务负责人" class="teacher-photo"> -->
+            <!-- TODO: 若暂无相关人员，替换为 <div class="teacher-avatar" aria-hidden="true">财</div> -->
+            <div class="teacher-avatar" aria-hidden="true">财</div>
+            <!-- TODO: 补充财务负责人真实姓名（姓名登记建议使用拼音） -->
+            <h3>待补充</h3>
+            <p class="teacher-role">财务负责人</p>
+            <p>负责社团财务收支管理，每学期面向全体成员公开。</p>
+            <div>
+              <span class="teacher-badge">财务管理</span>
+              <span class="teacher-badge">信息公开</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 四、核心人员（表格） ==================== -->
+    <section class="section section--alt" id="core-members">
+      <div class="container">
+        <h2 class="section-title">核心人员</h2>
+        <p class="section-subtitle"></p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>职务</th>
+                <th>姓名</th>
+                <th>职责说明</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- TODO: 姓名登记请使用拼音（如 Wang Yangming），避免生僻字无法显示 -->
+              <!-- 核心管理团队（社长 / 副社长 / 财务负责人）整行标黄高亮 -->
+              <tr class="row-highlight">
+                <td>社长</td>
+                <td>孔祥蘅</td>
+                <td>主持社团全面工作，统筹活动与对外联络</td>
+              </tr>
+              <tr class="row-highlight">
+                <td>副社长</td>
+                <td>待补充</td>
+                <td>协助社长，分管创作与活动组织</td>
+              </tr>
+              <tr class="row-highlight">
+                <td>财务负责人</td>
+                <td>待补充</td>
+                <td>负责财务收支管理与每学期公开</td>
+              </tr>
+              <tr>
+                <td>创作部部长</td>
+                <td>待补充</td>
+                <td>负责剧本创作与心理主题策划</td>
+              </tr>
+              <tr>
+                <td>演员部部长</td>
+                <td>待补充</td>
+                <td>负责演员招募、排练与舞台表演</td>
+              </tr>
+              <tr>
+                <td>舞台与影像技术部部长</td>
+                <td>待补充</td>
+                <td>负责舞台技术、影像拍摄与后期制作</td>
+              </tr>
+              <tr>
+                <td>美术与宣传部部长</td>
+                <td>待补充</td>
+                <td>负责视觉设计、宣传推广与新媒体运营</td>
+              </tr>
+              <tr>
+                <td>行政与财务部部长</td>
+                <td>待补充</td>
+                <td>负责行政事务、档案与财务协助</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 五、入社条件与报名 ==================== -->
+    <!-- 锚点 join-us：首页 Hero「加入我们」按钮的跳转目标 -->
+    <section class="section" id="join-us">
+      <div class="container">
+        <h2 class="section-title">入社条件与报名</h2>
+        <p class="section-subtitle">欢迎每一位热爱心理剧与心理影像创作的同学</p>
+
+        <div class="card" style="max-width: 640px; margin: 0 auto;">
+          <h3>入社条件</h3>
+          <ul style="margin: 12px 0 20px; padding-left: 20px; list-style: disc; color: var(--color-text); line-height: 2;">
+            <li>上海海洋大学在校学生；</li>
+            <li>对心理剧、心理影像等心理主题创作有兴趣；</li>
+            <li>认同社团宗旨，愿意遵守社团章程与各项制度；</li>
+            <li>能够保证一定的活动参与时间。</li>
+          </ul>
+
+          <!-- 报名链接占位：后续接入真实表单 -->
+          <!-- TODO: #替换为真实报名链接（如问卷星 / 金数据 / 腾讯问卷等表单地址） -->
+          <a href="#" class="btn btn--primary" aria-disabled="true">报名通道建设中</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== 页脚（全站一致） ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- 社团信息 -->
+        <div class="footer-col">
+          <h4>上海海洋大学光影社</h4>
+          <p>光至落笔 · 同幕共影</p>
+          <p>以心理健康教育为内核的心理剧与心理影像创作平台</p>
+        </div>
+
+        <!-- 快速导航 -->
+        <div class="footer-col">
+          <h4>快速导航</h4>
+          <ul>
+            <li><a href="about.html">关于我们</a></li>
+            <li><a href="governance.html">章程制度</a></li>
+            <li><a href="transparency.html">信息公开</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+          </ul>
+        </div>
+
+        <!-- 联系方式（占位） -->
+        <div class="footer-col">
+          <h4>联系我们</h4>
+          <!-- TODO: 替换为真实公共邮箱 -->
+          <p>公共邮箱：xxx@xxx.com</p>
+          <p>微信公众号：待补充</p>
+          <!-- TODO: 替换为真实地点 -->
+          <p>社团活动地点：待补充</p>
+          <p>指导老师办公地点：待补充</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="footer-year">2026</span> 上海海洋大学光影社 · 接受学校党委领导和团委指导 · 共青团上海海洋大学委员会及学生社团管理中心指导监督</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 全站交互脚本 -->
+  <script src="main.js"></script>
+</body>
+</html>
